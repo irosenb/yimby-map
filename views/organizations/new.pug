@@ -4,8 +4,14 @@ block content
   h1 New Organization
   form.organization.new(method="POST" action="/admin/organizations") 
     .row
-      input.name(type="text" name="name" autocomplete="false" placeholder="Name")
+      input.name(type="text" name="name" autocomplete=false placeholder="Name")
     .row
-      input.location(type="text" name="location" autocomplete="false" placeholder="Location")
+      input.location(type="text" name="location" autocomplete=false placeholder="Location")
     .row
-      input.url(type="url" name='url' autocomplete="false" placeholder="URL")
+      input.url(type="url" name='url' autocomplete=false placeholder="URL")
+    .row
+      input.twitter(type="url" name="twitter" autocomplete=false placeholder="twitter")
+    .row 
+      input.email(type="email" name="email" autocomplete=false placeholder="email")
+    .row
+      input(type="submit" value="Submit")
