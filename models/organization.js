@@ -22,9 +22,9 @@ Organization.all = function(callback) {
   var text = "SELECT * FROM Organization";
   client.query(text, function(err, results) {
     if (err) {
-      console.error(err);
+      callback(nil, error); 
     } else {
-      callback(results.rows);
+      callback(results.rows, nil);
     }
   }) 
 }

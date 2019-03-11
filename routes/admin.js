@@ -17,9 +17,16 @@ router.post('/admin/organizations', function(req, res, next) {
   var url = req.body.url; 
   var twitter = req.body.twitter;
 
-  Organization.create(name, email, location, url, twitter); 
+  Organization.create(name, email, location, url, twitter, function(result, error) {
+    if (error) {
+      console.error(error);
+      res.send(500);
+    } else {
+      res.send(200);
+    }
+  }); 
 
-  
+
 })
 
 module.exports = router;
