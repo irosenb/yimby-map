@@ -5,8 +5,8 @@ var Organization = {}
 Organization.create = function(name, email, location, url, twitter, callback) {
   const client = Organization.connection();
 
-  var text = "INSERT INTO Organization(name, email, location, url) VALUES ($1, $2, $3, $4)"
-  var values = [name, email, location, url];
+  var text = "INSERT INTO Organization(name, email, location, url, twitter) VALUES ($1, $2, $3, $4, $5)"
+  var values = [name, email, location, url, twitter];
   client.query(text, values, (err, results) => {
     if (err) {
       console.error(err);
@@ -22,9 +22,9 @@ Organization.all = function(callback) {
   var text = "SELECT * FROM Organization";
   client.query(text, function(err, results) {
     if (err) {
-      callback(nil, error); 
+      callback(null, error); 
     } else {
-      callback(results.rows, nil);
+      callback(results.rows, null);
     }
   }) 
 }
@@ -34,4 +34,8 @@ Organization.connection = function() {
   client.connect(); 
 
   return client
+}
+
+for (var k in Organization) {
+  exports[k] = Organization[k];
 }
