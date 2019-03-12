@@ -1,16 +1,19 @@
 var express = require('express'); 
 var router = express.Router(); 
-var Organization = require('../models/organization')
+var Organization = require('../models/organization');
 
-router.get('/admin/organizations', function(req, res, next) {
-  res.render('organizations/index', {})
-}) 
+router.get('/organizations', function(req, res, next) {
+  Organization.all(function(results) {
+    console.log(results)
+    res.render('organizations/index', {items: results});
+  });
+}); 
 
-router.get('/admin/organizations/new', function(req, res, next) {
-  res.render('organizations/new', {})
-})
+router.get('/organizations/new', function(req, res, next) {
+  res.render('organizations/new', {});
+});
 
-router.post('/admin/organizations', function(req, res, next) {
+router.post('/organizations', function(req, res, next) {
   var name = req.body.name;
   var email = req.body.email; 
   var location = req.body.location; 

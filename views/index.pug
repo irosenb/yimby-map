@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 YIMBY Directory
+  ul
+    each item in items
+      .organization
+        h2.name= item.name 
+        h3.location= item.location
+        a(href=item.twitter) Twitter
+        a(href=item.url) url

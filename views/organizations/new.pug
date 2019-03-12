@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   h1 New Organization
-  form.organization.new(method="POST" action="/admin/organizations") 
+  form.new-organization(method="POST" action="/admin/organizations") 
     .row
       input.name(type="text" name="name" autocomplete=false placeholder="Name")
     .row

@@ -1,4 +1,17 @@
 extends ../layout
 
 block content
-  h1 Hello 
+  h1.title YIMBY Directory
+  ul.organizations
+    each item in items
+      li.organization
+        h2.name= item.name 
+        h3.location= item.location
+        div.links
+          a.url(href=item.url)
+            img(src='/images/link.png')
+          a.twitter(href=item.twitter)
+            img(src='/images/twitter.png')
+  footer
+    p Created by 
+      a(href="https://twitter.com/irosenb") @irosenb
