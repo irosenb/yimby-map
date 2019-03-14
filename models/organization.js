@@ -9,9 +9,9 @@ Organization.create = function(name, email, location, url, twitter, callback) {
   var values = [name, email, location, url, twitter];
   client.query(text, values, (err, results) => {
     if (err) {
-      console.error(err);
+      callback(null, err)
     } else {
-      callback(results.rows);
+      callback(results.rows, null);
     }
   })
 }
@@ -22,7 +22,7 @@ Organization.all = function(callback) {
   var text = "SELECT * FROM Organization";
   client.query(text, function(err, results) {
     if (err) {
-      callback(null, error); 
+      callback(null, err); 
     } else {
       callback(results.rows, null);
     }
